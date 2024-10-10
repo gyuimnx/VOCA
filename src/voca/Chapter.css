@@ -1,0 +1,45 @@
+.Chapter {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center; /* 수직 가운데 정렬 */
+    align-items: center; /* 수평 가운데 정렬 */
+    background-color: #fae100;
+    text-align: center;
+    margin: 2% auto; /* 수평으로 가운데 정렬 (가로축) */
+    max-width: 1000px;
+    height: 92vh;
+
+    border-radius: 10%;
+}
+
+.Header {
+    display: flex;
+    position: relative;
+}
+
+.CreateBtn {
+    background-color: #0065d1;
+    color: white;
+    padding: 10px;
+    font-size: large;
+    border-radius: 15px;
+}
+
+.ModalOverlay {
+    width: 300px;
+    height: 200px;
+    background-color: white;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ModalTitle {
+    padding-bottom: 10%;
+}
+
+.Quiz {
+    margin-top: 10%;
+}
