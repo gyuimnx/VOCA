@@ -2,44 +2,143 @@
     display: flex;
     flex-direction: column;
 
-    justify-content: center; /* 수직 가운데 정렬 */
+    justify-content: space-between; /* 수직 가운데 정렬 */
     align-items: center; /* 수평 가운데 정렬 */
     background-color: #fae100;
     text-align: center;
+
     margin: 2% auto; /* 수평으로 가운데 정렬 (가로축) */
+    width: 100%;
     max-width: 1000px;
-    height: 92vh;
+    min-height: 90vh;
+    padding-bottom: 30px;
 
     border-radius: 10%;
-}
 
-.Header {
-    display: flex;
+    transition: filter 0.3s ease-in-out;
     position: relative;
 }
 
+/*제목이랑 챕터 추가 버튼*/
+.Header {
+    /* display: flex; */
+    justify-content: center;
+    align-items: center; /* 중앙 정렬 */
+    width: 100%;
+    padding: 10px;
+    z-index: 10; /* 다른 요소들 위에 표시 */
+    position: relative;
+
+    margin-bottom: 30px;
+}
+
+/* VOCA글자 */
+.VOCA {
+    font-size: 60px;
+    color: white;
+    letter-spacing: 2px; /* 글자 간격 */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* 약간의 그림자 효과 */
+}
+
+/* 챕터추가 버튼 */
 .CreateBtn {
     background-color: #0065d1;
     color: white;
-    padding: 10px;
+    padding: 13px;
     font-size: large;
+    border: none;
     border-radius: 15px;
+
+    position: absolute;
+    right: 10%;
+
+    cursor: pointer;
 }
 
+.CreateBtn:hover {
+    background-color: #0a529f;
+}
+
+/* 새 챕터 만들기 모달창 */
 .ModalOverlay {
+    position: fixed;
+    top: 20%; /*픽스하고 위에서 20%에 위치하도록*/
     width: 300px;
     height: 200px;
     background-color: white;
 
+    border: 3px solid black;
+    border-radius: 20px;
+
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 1000;
 }
 
+/* 모달 창 안에 내용들 */
+.Modal {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 1001;
+}
+
+/* 새 챕터 만들기 제목 */
 .ModalTitle {
-    padding-bottom: 10%;
+    margin: 10px;
 }
 
-.Quiz {
-    margin-top: 10%;
+/* 모달 창 버튼 모음 */
+.ModalBtn {
+    margin-top: 5%;
+    position: relative;
+    width: 260px;
+}
+
+/* input 태그(근데 왜 className으론 안되지) */
+input[type=text] {
+    width: 90%;
+    height: 30px;
+    font-size: 15px;
+
+    margin-bottom: 10px;
+}
+
+/* 생성버튼 */
+.submitBtn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+    margin-left: 50%;
+}
+
+/* 취소버튼 */
+.cancelBtn {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.ChapterList {
+    flex-grow: 1;
+    width: 100%;
+    padding: 10px;
+    overflow-y: auto;
+    max-height: calc(100vh - 200px);
+}
+
+/* 퀴즈버튼 */
+.QuizArea {
+    margin-top: 50px;
+    color: white;
+    text-align: center;
+    border-radius: 5px;
 }

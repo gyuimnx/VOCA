@@ -18,40 +18,47 @@ function Chapter() {
         }
     }
 
+    // 챕터 삭제 함수
+    function DeleteChapter(index) {
+        setChapters(chapters.filter((_, i) => i !== index));
+    }
+
     return (
         <div className="Chapter">
             <h1 className="Header">
-                <div>보카</div>
-                <button 
+                <div className="VOCA">VOCA</div>
+                <button
                     className="CreateBtn"
-                    onClick={()=>setCreateOpen(true)}
+                    onClick={() => setCreateOpen(true)}
                 >
-                    챕터 추가
+                    새 챕터 만들기
                 </button>
             </h1>
 
             {createOpen && (
                 <div className="ModalOverlay">
                     <div className="Modal">
-                        <h3 className="ModalTitle">새 챕터 만들기</h3>
-                        <form onSubmit={handleCreateChapter}>
-                            <input 
+                        <h2 className="ModalTitle">새 챕터 만들기</h2>
+                        <form onSubmit={handleCreateChapter} className="ChapterForm">
+                            <input
                                 type="text"
                                 value={newChapter}
                                 onChange={(e) => setNewChapter(e.target.value)}
                                 placeholder="챕터 이름 입력"
                             />
                             <div className="ModalBtn">
-                                <button type="submit">생성</button>
-                                <button type="button" onClick={() => setCreateOpen(false)}>취소</button>
+                                <button type="submit" className="submitBtn">추가</button>
+                                <button type="button" className="cancelBtn" onClick={() => setCreateOpen(false)}>취소</button>
                             </div>
                         </form>
                     </div>
                 </div>
             )}
-
-            <ListChapter />
-            <div className="Quiz">
+            
+            <div className="ChapterList">
+                <ListChapter chapters={chapters} DeleteChapter={DeleteChapter} />
+            </div>
+            <div className="QuizArea">
                 <button className="QuizBtn">Quiz</button>
             </div>
         </div>
