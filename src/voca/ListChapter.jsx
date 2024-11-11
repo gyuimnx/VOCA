@@ -1,20 +1,25 @@
 import React from 'react';
 import './ListChapter.css';
 
-function ListChapter({ chapters, DeleteChapter }) {
+function ListChapter({ chapters, DeleteChapter, onChapterClick }) {
     return (
         <div className="ListChapter">
-            <h2 className='ChapterSet'>Chapter List</h2>
+            <h2 className='ChapterSet'>나의 챕터 목록</h2>
             {chapters.length === 0 ? (
-                <p>생성된 챕터가 없습니다.</p>
+                <p className='empty'>생성된 챕터가 없습니다.</p>
             ) : (
                 <div className='ChapterContainer'>
                     {chapters.map((chapter, index) => (
-                        <div key={index} className='ChapterItem'>
+                        <div key={index} className='ChapterItem' onClick={() => onChapterClick(chapter)}>
                             {chapter.name}
                             <div className='Btns'>
-                                <button className='CorrBtn'>수정</button>
-                                <button className='DeleteBtn' onClick={() => DeleteChapter(index)}>삭제</button>
+                                <button className='CorrBtn' onClick={(e) => {
+                                    e.stopPropagation()
+                                }}>수정</button>
+                                <button className='DeleteBtn' onClick={(e) => {
+                                    e.stopPropagation();
+                                    DeleteChapter(index);
+                                }}>삭제</button>
                             </div>
                         </div>
                     ))}
@@ -23,5 +28,6 @@ function ListChapter({ chapters, DeleteChapter }) {
         </div>
     );
 }
+// 버튼에 e.stopPropagation : 버튼 클릭 이벤트가 상위로 전파되지 않도록 함
 
 export default ListChapter;

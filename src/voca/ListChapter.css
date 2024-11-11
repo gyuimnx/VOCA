@@ -12,6 +12,15 @@
     font-size: 30px;
 }
 
+.ListChapter p {
+    font-size: 25px;
+    color: blue;
+    font-weight: bold;
+
+    position: relative;
+    top: 20vh;
+}
+
 .ChapterItem {
     width: 280px;
     height: 150px;
@@ -52,7 +61,7 @@
     padding: 8px 12px;
     margin-left: 10px;
     border: none;
-    border-radius: 3px;
+    border-radius: 5px;
     cursor: pointer;
     display: inline-block;
 

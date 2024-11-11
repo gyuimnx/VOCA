@@ -1,12 +1,18 @@
 import React from "react";
 import Chapter from "./Chapter";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Word from "./Word";
 // import Word from "./Word";
 
 function App() {
     return (
-        <div className="App">
-            <Chapter />
-        </div>
+        <Router>
+            <Routes>
+                <Route path="/" element={<Chapter />} />
+                <Route path="/Chapter" element={<Chapter />} />
+                <Route path="/Word/:chapterName" element={<Word />} />
+            </Routes>
+        </Router>
     );
 }
 

@@ -51,6 +51,7 @@
 
     position: absolute;
     right: 10%;
+    bottom: -25px; /*안 겹치게*/
 
     cursor: pointer;
 }

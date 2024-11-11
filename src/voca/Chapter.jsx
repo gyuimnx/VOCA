@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 import './Chapter.css'
 import ListChapter from "./ListChapter";
 
@@ -7,20 +8,34 @@ function Chapter() {
     const [newChapter, setNewChapter] = useState(''); // 새 챕터
     const [createOpen, setCreateOpen] = useState(false); // 새 챕터 만들기 눌렀나
     // const [edit, setEdit] = useState = (null); // 챕터 수정
+    const navigate = useNavigate();
 
     // 새 챕터 만들기 함수 (근데 어캐하지 이거 맞나)
     function handleCreateChapter(e) {
         e.preventDefault();
         if (newChapter.trim()) {
-            setChapters([...chapters, { name: newChapter }]);
+            const newChapterObj = { name: newChapter, words: [] };
+            const updatedChapters = [...chapters, newChapterObj];
+            setChapters(updatedChapters);
+            localStorage.setItem('chapters', JSON.stringify(updatedChapters));
             setNewChapter('');
             setCreateOpen(false);
-        }
-    }
+        };
+    };
+
+    // 챕터 목록 불러오기
+    useEffect(() => {
+        const storedChapters = JSON.parse(localStorage.getItem('chapters')) || [];
+        setChapters(storedChapters);
+    }, []);
 
     // 챕터 삭제 함수
     function DeleteChapter(index) {
         setChapters(chapters.filter((_, i) => i !== index));
+    }
+
+    function handleChapterClick(chapterName) {
+        navigate(`/Word/${encodeURIComponent(chapterName)}`);
     }
 
     return (
@@ -56,7 +71,7 @@ function Chapter() {
             )}
             
             <div className="ChapterList">
-                <ListChapter chapters={chapters} DeleteChapter={DeleteChapter} />
+                <ListChapter chapters={chapters} DeleteChapter={DeleteChapter} onChapterClick={(chapter) => handleChapterClick(chapter.name)} />
             </div>
             <div className="QuizArea">
                 <button className="QuizBtn">Quiz</button>
