@@ -31,7 +31,9 @@ function Chapter() {
 
     // 챕터 삭제 함수
     function DeleteChapter(index) {
-        setChapters(chapters.filter((_, i) => i !== index));
+        const updatedChapters = chapters.filter((_, i) => i !== index); //filter로 삭제할 챕터를 제외한 새 배열 생성
+        setChapters(updatedChapters); // state 업데이트
+        localStorage.setItem('chapters', JSON.stringify(updatedChapters)); // 로컬스토리지 업데이트
     }
 
     function handleChapterClick(chapterName) {
@@ -71,7 +73,7 @@ function Chapter() {
             )}
             
             <div className="ChapterList">
-                <ListChapter chapters={chapters} DeleteChapter={DeleteChapter} onChapterClick={(chapter) => handleChapterClick(chapter.name)} />
+                <ListChapter chapters={chapters} DeleteChapter={DeleteChapter} onChapterClick={(chapter) => handleChapterClick(chapter.name)} setChapters={setChapters}/>
             </div>
             <div className="QuizArea">
                 <button className="QuizBtn">Quiz</button>
