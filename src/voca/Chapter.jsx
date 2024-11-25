@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import './Chapter.css'
 import ListChapter from "./ListChapter";
+import Quiz from "./Quiz";
 
 function Chapter() {
     const [chapters, setChapters] = useState([]); // chapter 모음
@@ -75,9 +76,7 @@ function Chapter() {
             <div className="ChapterList">
                 <ListChapter chapters={chapters} DeleteChapter={DeleteChapter} onChapterClick={(chapter) => handleChapterClick(chapter.name)} setChapters={setChapters}/>
             </div>
-            <div className="QuizArea">
-                <button className="QuizBtn">Quiz</button>
-            </div>
+            <Quiz />
         </div>
     );
 }

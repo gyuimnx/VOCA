@@ -3,7 +3,9 @@ import React from "react";
 function Quiz() {
     return (
         <div className="QuizPage">
-            Quiz
+            <div className="QuizArea">
+                <button className="QuizBtn">Quiz</button>
+            </div>
         </div>
     );
 }

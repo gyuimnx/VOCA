@@ -91,21 +91,25 @@ function Word() {
                                 placeholder="단어"
                                 value={newWord.word}
                                 onChange={(e) => setNewWord({ ...newWord, word: e.target.value })}
+                                className="WordBar"
                             />
                             <input
                                 type="text"
                                 placeholder="의미"
                                 value={newWord.meaning}
                                 onChange={(e) => setNewWord({ ...newWord, meaning: e.target.value })}
+                                className="MeanBar"
                             />
-                            <button type="submit" className="SubmitBtn">추가</button>
-                            <button
-                                type="button"
-                                className="CancelBtn"
-                                onClick={() => setIsAddingWord(false)}
-                            >
-                                취소
-                            </button>
+                            <div className="FormButtons">
+                                <button type="submit" className="SubmitBtn">추가</button>
+                                <button
+                                    type="button"
+                                    className="CancelBtn"
+                                    onClick={() => setIsAddingWord(false)}
+                                >
+                                    취소
+                                </button>
+                            </div>
                         </form>
                     </div>
                 </div>
