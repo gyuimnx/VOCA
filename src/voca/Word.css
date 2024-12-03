@@ -1,8 +1,16 @@
 /* Word.css */
+.Wodr_container {
+    margin: 0;
+    display: flex;
+}
+
 .Word {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
+
+    justify-items: center;
+    align-items: center;
 }
 
 .WordHeader {
@@ -11,7 +19,9 @@
     align-items: center;
     margin-bottom: 30px;
     padding-bottom: 15px;
-    border-bottom: 3px solid #fae100;
+    border-bottom: 3px solid #facc00;
+
+    width: 800px;
 }
 
 .WordHeader h1 {
@@ -156,8 +166,10 @@
     text-align: center;
     color: #666;
     padding: 30px;
-    background-color: #f9f9f9;
+    background-color: #d6d6d6;
     border-radius: 5px;
+
+    width: 700px;
 }
 
 .WordItems {
@@ -171,9 +183,10 @@
     align-items: center;
     padding: 15px;
     background-color: white;
-    border: 2px solid #fae100;
+    border: 2px solid #facc00;
     border-radius: 8px;
     transition: transform 0.2s;
+    width: 600px;
 }
 
 
@@ -238,19 +251,19 @@
     justify-content: center;
     align-items: center;
 
-    border-radius: 10px;
-    border: 1px solid rgba(0, 0, 0, 0.293);
-    background-color: rgba(211, 211, 211, 0.449);
+    border-radius: 30px;
+    border: none;
+    background-color: transparent;
+    padding: 10px;
 
     cursor: pointer;
 }
 
 .BackBtn:hover {
-    background-color: rgb(199, 198, 198);
+    background-color: rgb(236, 236, 236);
 }
 
 .BackImg {
     width: 30px;
     height: 25px;
 }
-

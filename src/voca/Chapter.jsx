@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from 'react-router-dom';
 import './Chapter.css'
 import ListChapter from "./ListChapter";
-import Quiz from "./Quiz";
+import { Link } from "react-router-dom";
 
 function Chapter() {
     const [chapters, setChapters] = useState([]); // chapter 모음
     const [newChapter, setNewChapter] = useState(''); // 새 챕터
-    const [createOpen, setCreateOpen] = useState(false); // 새 챕터 만들기 눌렀나
+    const [createOpen, setCreateOpen] = useState(false); // 새 챕터 만들기 눌렀는가
     // const [edit, setEdit] = useState = (null); // 챕터 수정
-    const navigate = useNavigate();
 
     // 새 챕터 만들기 함수 (근데 어캐하지 이거 맞나)
     function handleCreateChapter(e) {
@@ -37,10 +35,6 @@ function Chapter() {
         localStorage.setItem('chapters', JSON.stringify(updatedChapters)); // 로컬스토리지 업데이트
     }
 
-    function handleChapterClick(chapterName) {
-        navigate(`/Word/${encodeURIComponent(chapterName)}`);
-    }
-
     return (
         <div className="Chapter">
             <h1 className="Header">
@@ -49,34 +43,40 @@ function Chapter() {
                     className="CreateBtn"
                     onClick={() => setCreateOpen(true)}
                 >
-                    새 챕터 만들기
+                    New Chapter
                 </button>
             </h1>
 
             {createOpen && (
                 <div className="ModalOverlay">
                     <div className="Modal">
-                        <h2 className="ModalTitle">새 챕터 만들기</h2>
+                        <h2 className="ModalTitle">New Chapter</h2>
                         <form onSubmit={handleCreateChapter} className="ChapterForm">
                             <input
                                 type="text"
                                 value={newChapter}
                                 onChange={(e) => setNewChapter(e.target.value)}
-                                placeholder="챕터 이름 입력"
+                                placeholder="Chapter Name"
                             />
                             <div className="ModalBtn">
-                                <button type="submit" className="submitBtn">추가</button>
-                                <button type="button" className="cancelBtn" onClick={() => setCreateOpen(false)}>취소</button>
+                                <button type="submit" className="submitBtn">add</button>
+                                <button type="button" className="cancelBtn" onClick={() => setCreateOpen(false)}>cancel</button>
                             </div>
                         </form>
                     </div>
                 </div>
             )}
-            
+
             <div className="ChapterList">
-                <ListChapter chapters={chapters} DeleteChapter={DeleteChapter} onChapterClick={(chapter) => handleChapterClick(chapter.name)} setChapters={setChapters}/>
+                <ListChapter chapters={chapters} DeleteChapter={DeleteChapter} setChapters={setChapters} />
             </div>
-            <Quiz />
+            <Link className="QuizLink" to={"/Quiz"}>
+                <div className="QuizPage">
+                    <div className="QuizArea">
+                        <button className="QuizBtn">Quiz</button>
+                    </div>
+                </div>
+            </Link>
         </div>
     );
 }

@@ -12,6 +12,8 @@ function App() {
                 <Route path="/" element={<Chapter />} />
                 <Route path="/Chapter" element={<Chapter />} />
                 <Route path="/Word/:chapterName" element={<Word />} />
+                
+                <Route path="/Quiz" element={<Quiz />} />
             </Routes>
         </Router>
     );

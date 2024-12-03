@@ -70,87 +70,89 @@ function Word() {
     if (!chapter) return <div>Loading...</div>;
 
     return (
-        <div className="Word">
-            <header className="WordHeader">
-                <button className="BackBtn" onClick={goToHome}>
-                    <img className="BackImg" src="/img/arrow.png" alt="back" />
-                </button>
-                <h1>{chapter.name}</h1>
-                <button className="AddWordBtn" onClick={() => setIsAddingWord(true)}>
-                    단어 추가
-                </button>
-            </header>
+        <div className="Wodr_container">
+            <div className="Word">
+                <header className="WordHeader">
+                    <button className="BackBtn" onClick={goToHome}>
+                        <img className="BackImg" src="/img/arrow.png" alt="back" />
+                    </button>
+                    <h1>{chapter.name}</h1>
+                    <button className="AddWordBtn" onClick={() => setIsAddingWord(true)}>
+                        New
+                    </button>
+                </header>
 
-            {isAddingWord && (
-                <div className="WordModalOverlay">
-                    <div className="WordModal">
-                        <h2>새 단어 추가하기</h2>
-                        <form onSubmit={handleAddWord}>
-                            <input
-                                type="text"
-                                placeholder="단어"
-                                value={newWord.word}
-                                onChange={(e) => setNewWord({ ...newWord, word: e.target.value })}
-                                className="WordBar"
-                            />
-                            <input
-                                type="text"
-                                placeholder="의미"
-                                value={newWord.meaning}
-                                onChange={(e) => setNewWord({ ...newWord, meaning: e.target.value })}
-                                className="MeanBar"
-                            />
-                            <div className="FormButtons">
-                                <button type="submit" className="SubmitBtn">추가</button>
-                                <button
-                                    type="button"
-                                    className="CancelBtn"
-                                    onClick={() => setIsAddingWord(false)}
-                                >
-                                    취소
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            )}
-
-            <div className="WordList">
-                {chapter.words.length === 0 ? (
-                    <h2 className="EmptyMessage">등록된 단어가 없습니다.</h2>
-                ) : (
-                    <div className="WordItems">
-                        {chapter.words.map((word, index) => (
-                            <div key={index} className="WordItem">
-                                <div className="WordContent">
-                                    <span className="WordText">{word.word}</span>
-                                    <span className="WordMeaning">{word.meaning}</span>
-                                </div>
-                                <div className="WordBtns">
+                {isAddingWord && (
+                    <div className="WordModalOverlay">
+                        <div className="WordModal">
+                            <h2>New Word</h2>
+                            <form onSubmit={handleAddWord}>
+                                <input
+                                    type="text"
+                                    placeholder="단어"
+                                    value={newWord.word}
+                                    onChange={(e) => setNewWord({ ...newWord, word: e.target.value })}
+                                    className="WordBar"
+                                />
+                                <input
+                                    type="text"
+                                    placeholder="의미"
+                                    value={newWord.meaning}
+                                    onChange={(e) => setNewWord({ ...newWord, meaning: e.target.value })}
+                                    className="MeanBar"
+                                />
+                                <div className="FormButtons">
+                                    <button type="submit" className="SubmitBtn">추가</button>
                                     <button
-                                        className="CorrWordBtn"
-                                        onClick={() => {
-                                            const newMean = prompt("뜻 수정", word.meaning);
-                                            if (newMean) handleCorrWord(word.word, newMean);
-                                        }}
+                                        type="button"
+                                        className="CancelBtn"
+                                        onClick={() => setIsAddingWord(false)}
                                     >
-                                        수정
-                                    </button>
-                                    <button
-                                        className="DeleteWordBtn"
-                                        onClick={() => {
-                                            if (window.confirm('단어를 삭제하시겠습니까?')) {
-                                                handleDeleteWord(index);
-                                            }
-                                        }}
-                                    >
-                                        삭제
+                                        취소
                                     </button>
                                 </div>
-                            </div>
-                        ))}
+                            </form>
+                        </div>
                     </div>
                 )}
+
+                <div className="WordList">
+                    {chapter.words.length === 0 ? (
+                        <h2 className="EmptyMessage">등록된 단어가 없습니다.</h2>
+                    ) : (
+                        <div className="WordItems">
+                            {chapter.words.map((word, index) => (
+                                <div key={index} className="WordItem">
+                                    <div className="WordContent">
+                                        <span className="WordText">{word.word}</span>
+                                        <span className="WordMeaning">{word.meaning}</span>
+                                    </div>
+                                    <div className="WordBtns">
+                                        <button
+                                            className="CorrWordBtn"
+                                            onClick={() => {
+                                                const newMean = prompt("뜻 수정", word.meaning);
+                                                if (newMean) handleCorrWord(word.word, newMean);
+                                            }}
+                                        >
+                                            수정
+                                        </button>
+                                        <button
+                                            className="DeleteWordBtn"
+                                            onClick={() => {
+                                                if (window.confirm('단어를 삭제하시겠습니까?')) {
+                                                    handleDeleteWord(index);
+                                                }
+                                            }}
+                                        >
+                                            삭제
+                                        </button>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    )}
+                </div>
             </div>
         </div>
     );
