@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+
 .ChapterContainer {
     display: flex;
     flex-direction: row;
@@ -7,18 +9,13 @@
 }
 
 .ChapterSet{
-    display: flex;
     margin-left: 5%;
+    margin-bottom: 45px;
     font-size: 30px;
-}
+    align-self: flex-start;
 
-.ListChapter p {
-    font-size: 40px;
-    color: lightgray;
-    font-weight: bold;
-
-    position: relative;
-    top: 20vh;
+    font-family: 'Roboto';
+    /* font-weight: bold; */
 }
 
 .ChapterItem {
@@ -26,6 +23,9 @@
     height: 110px;
 
     background-color: #FFC107;
+    /* background-color: white;
+    border: 3px solid #FFC107; */
+
     justify-content: space-evenly;
     align-items: center;
 
@@ -94,12 +94,23 @@
     background-color: #c82333;
 }
 
-/* .empty {
-    background-color: gray;
-    border-radius: 10px;
-    height: 150px;
-    margin: 0;
+.empty {
+    font-size: 40px;
+    font-weight: bold;
+    top: 10vh;
 
-    align-items: center;
+    text-align: center;
+    color: #666;
+    padding: 30px;
+    /* background-color: #d6d6d6; */
+    border-radius: 5px;
+
+    width: 900px;
+}
+
+.ListChapter {
+    display: flex;
     justify-content: center;
-} */
+    align-items: center;
+    flex-direction: column;
+}

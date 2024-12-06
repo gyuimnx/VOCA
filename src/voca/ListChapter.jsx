@@ -19,7 +19,7 @@ function ListChapter({ chapters, DeleteChapter, setChapters }) {
         <div className="ListChapter">
             <h2 className='ChapterSet'>My Chapter</h2>
             {chapters.length === 0 ? (
-                <p className='empty'>Empty Chapter</p>
+                <div className='empty'>Empty Chapter</div>
             ) : (
                 <div className='ChapterContainer'>
                     {chapters.map((chapter, index) => (
